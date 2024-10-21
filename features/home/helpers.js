@@ -1,10 +1,13 @@
 import { setUserData } from "@/features/user/userSlice";
 import { getUser } from "@/api/services/UserService"; // Adjust the import path as necessary
 import { getSocials } from "@/api/services/SocialsService";
+import { getStats } from "@/api/services/StatsService";
+import { getServices } from "@/api/services/ServicesService";
 import { setSocials } from "./socials/SocialsSlice";
 import { saveUserData } from "@/lib/storage/indexedDB";
 import { getUserData } from "@/lib/storage/indexedDB";
 import { setStats } from "@/features/home/stats/StatsSlice";
+import { setServices } from "./services/ServicesSlice";
 
 export const fetchUser = async (userId, dispatch, data) => {
   try {
@@ -22,20 +25,28 @@ export const getUsersBack = async (userId, dispatch) => {
   if (userData.error) {
     return;
   }
-  const { socials, stats, ...data } = userData;
+  const { socials, stats, services, ...data } = userData;
   dispatch(setUserData(data));
-  saveUserData(userData);
   if (userData.socials) {
     dispatch(setSocials(socials));
   } else {
-    fetchSocials(userId, dispatch, userData.socials);
+    const socials = await fetchSocials(userId, dispatch, userData.socials);
+    userData.socials = socials;
   }
   if (userData.stats) {
     console.log("Stats Data from IndexedDB:", stats);
     dispatch(setStats(stats));
   } else {
-    fetchStats(userId, dispatch, userData.stats);
+    const stats = fetchStats(userId, dispatch, userData.stats);
+    userData.stats = stats;
   }
+  if (userData.services) {
+    dispatch(setServices(services));
+  } else {
+    const services = fetchServices(userId, dispatch, userData.services);
+    userData.services = services;
+  }
+  saveUserData(userData);
 };
 
 export const fetchSocials = async (userId, dispatch, socials) => {
@@ -59,5 +70,17 @@ export const fetchStats = async (userId, dispatch, stats) => {
     dispatch(setStats(newStats));
   } catch (error) {
     console.error("Failed to fetch stats:", error);
+  }
+};
+
+export const fetchServices = async (userId, dispatch, services) => {
+  try {
+    if (services && services.length > 0) {
+      return;
+    }
+    const newServices = await getServices(userId);
+    dispatch(setServices(newServices));
+  } catch (error) {
+    console.error("Failed to fetch services:", error);
   }
 };

@@ -12,13 +12,18 @@ function Homepage() {
     <section className="h-full ">
       <div className="flex flex-col lg:flex-row items-center justify-between lg:pt-8 lg:pb-24">
         <div className="text-center lg:text-left flex flex-col items-center lg:items-start order-2 lg:order-none ">
-          <span className="text-xl  ">{user.designation ?? "..."}</span>
+          <span className="text-xl  ">
+            {user.designation ?? "Designation "}
+          </span>
           <h1 className="mb-5 h1 ">
             Hello I am <br />
-            <span className="text-accent uppercase ">{user.name ?? "..."}</span>
+            <span className="text-accent uppercase ">
+              {user.name ?? "John Doe"}
+            </span>
           </h1>
           <p className=" text-foreground w-[100%] lg:max-w-[85%] mb-12 ">
-            {user.description ?? "..."}
+            {user.description ??
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
           </p>
           <div className="flex flex-col lg:flex-row items-center gap-8 ">
             <Button

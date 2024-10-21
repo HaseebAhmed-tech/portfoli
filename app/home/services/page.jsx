@@ -4,7 +4,6 @@ import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
 import { services } from "@/lib/constants/constants";
 import { motion } from "framer-motion";
-import Home from "../page";
 
 function Services() {
   return (

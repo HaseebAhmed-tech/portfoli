@@ -1,0 +1,23 @@
+import { Input } from "@/components/ui/input";
+
+export const createStatElement = (id) => {
+  return (
+    <div
+      key={id}
+      className="flex items-center w-[80%] justify-between rounded-lg"
+    >
+      <Input
+        className="w-[65%] placeholder:text-sm md:placeholder:text-base"
+        type="text"
+        name={`statName-${id}`}
+        placeholder="Stat Title"
+      />
+      <Input
+        className="w-[35%] md:w-[25%] placeholder:text-sm md:placeholder:text-base"
+        type="number"
+        name={`statValue-${id}`}
+        placeholder="Value"
+      />
+    </div>
+  );
+};

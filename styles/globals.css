@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #1c1c22;
+  --accent: #00ff99;
+  --accent-hover: #00e187;
+  --icons: #262626;
+  --secondrytext: #ffffff99;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #1c1c22;
+    --accent: #00ff99;
+    --accent-hover: #00e187;
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --icons: #262626;
+    --secondrytext: #ffffff99;
+  }
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+  body{
+    @apply font-primary bg-primary text-foreground leading-loose
+  }
+
+  .h1{
+    @apply text-5xl xl:text-7xl leading-[1.1] font-semibold
+   }
+  .h2{
+    @apply text-3xl xl:text-5xl leading-[1.1] font-semibold
+   }
+  .h3{
+    @apply text-2xl xl:text-[1.8rem] leading-[1.1] font-semibold
+   }
+   .text-outline{
+    -webkit-text-stroke: 1px #ededed;
+    
+  }
+  .text-outline-hover{
+    -webkit-text-stroke: 1px #00e187;
+  }
+}
+
+

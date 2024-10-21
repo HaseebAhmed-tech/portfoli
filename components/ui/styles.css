@@ -1,0 +1,17 @@
+/* Button */
+.groupbtn::before {
+    @apply bg-accent;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.groupbtn:hover::before {
+    width: 100%;
+}
+

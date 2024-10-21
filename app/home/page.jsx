@@ -42,7 +42,7 @@ export default function Home({ children }) {
             ) : tabIndex === 4 ? (
               <Contact />
             ) : (
-              <div>Home</div>
+              <div>Home Page</div>
             )}
           </div>
         </PageTransition>

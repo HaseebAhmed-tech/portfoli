@@ -40,6 +40,12 @@ export const handleSubmit = async (
       data: statsData,
       id: userResponse.userId,
     });
+    console.log("Socials Data from Signup Helper: ", socialsData);
+        console.log("User Data from Signup Helper: ", {
+          ...newData,
+          name: `${firstname} ${lastname}`.trim(),
+        } );
+        console.log("Stats Data from Signup Helper: ", statsData, );
 
     return {
       ...newData,
@@ -69,13 +75,9 @@ export const handleSubmit = async (
     const statValue = `statValue-${key}`;
     const statNameData = formData.get(statName);
     const statValueData = formData.get(statValue);
-    console.log("=======================================");
-    console.log("Stat Name", statNameData);
-    console.log("Stat Value", statValueData);
-    console.log("=======================================");
+
     return !(statNameData && statValueData);
   });
-  console.log("Stats Passing Check", statsCheck);
 
   if (!validatedFields.success || statsCheck.length > 0) {
     if (statsCheck.length > 0) {

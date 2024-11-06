@@ -9,6 +9,8 @@ function ErrorInputs({
   inputStyle,
   prefix,
   Icon,
+  value,
+  set,
 }) {
   return !prefix ? (
     <div className={`flex flex-col ${divStyle}`}>
@@ -17,6 +19,8 @@ function ErrorInputs({
         type={type ?? "text"}
         name={name}
         placeholder={placeholder}
+        defaultValue={value ?? ""}
+        onChange={(e) => (null)}
       />
       {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
     </div>
@@ -29,6 +33,8 @@ function ErrorInputs({
           type={type ?? "text"}
           name={name}
           placeholder={placeholder}
+          defaultValue={value ?? ""}
+          onChange={(e) => (null)}
         />
       </div>
       {error && <p className="text-red-500 text-xs mt-2">{error}</p>}

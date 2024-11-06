@@ -1,12 +1,18 @@
 "use client";
 
+import Modal from "@/components/common/Modal";
 import Image from "next/image";
 import { FaSmileWink } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { useSelector } from "react-redux";
 import Header from "@/components/common/Header";
+import SocialLinks from "@/components/forms/SocialLinks";
+import AccountInfo from "./../../components/forms/AccountInfo";
+import StatsData from "./../../components/forms/StatsData";
+
 function Profile() {
   const userData = useSelector((state) => state.user.userData);
+
   return (
     <>
       <Header />
@@ -42,47 +48,42 @@ function Profile() {
           <div className="flex-1 px-12">
             <div className="flex flex-col">
               <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Personal Information</h1>
-                <Button variant="simple" size="sm">
-                  Edit
-                </Button>
+                <h1 className="text-lg">Account Information</h1>
+                <Modal
+                  ModalTrigger={
+                    <Button variant="simple" size="sm">
+                      Edit
+                    </Button>
+                  }
+                  title={"Account Information"}
+                  ModalContent={<AccountInfo />}
+                />
               </div>
               <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Contact Information</h1>
-                <Button variant="simple" size="sm">
-                  Edit
-                </Button>
+                <h1 className="text-lg">Stats</h1>
+                <Modal
+                  ModalTrigger={
+                    <Button variant="simple" size="sm">
+                      Edit
+                    </Button>
+                  }
+                  title={"Stats Data"}
+                  ModalContent={<StatsData />}
+                />
               </div>
               <div className="flex items-center justify-between py-4 border-b border-slate-800">
                 <h1 className="text-lg">Social Links</h1>
-                <Button variant="simple" size="sm">
-                  Edit
-                </Button>
+                <Modal
+                  ModalTrigger={
+                    <Button variant="simple" size="sm">
+                      Edit
+                    </Button>
+                  }
+                  title={"Socail Links"}
+                  ModalContent={<SocialLinks />}
+                />
               </div>
-              <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Experience</h1>
-                <Button variant="simple" size="sm">
-                  Edit
-                </Button>
-              </div>
-              <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Education</h1>
-                <Button variant="simple" size="sm">
-                  Edit
-                </Button>
-              </div>
-              <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Skills</h1>
-                <Button variant="simple" size="sm">
-                  Edit
-                </Button>
-              </div>
-              <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Projects</h1>
-                <Button variant="simple" size="sm">
-                  Edit
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ const Resume = dynamic(() => import("@/app/home/resume/page"));
 const Work = dynamic(() => import("@/app/home/work/page"));
 const Contact = dynamic(() => import("@/app/home/contact/page"));
 
-export default function Home({ children }) {
+export default function Home() {
   const tabIndex = useSelector((state) => state.index.value);
   const userId = useSelector((state) => state.user.userId);
   const data = useSelector((state) => state.user.userData);

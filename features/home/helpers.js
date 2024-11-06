@@ -34,7 +34,6 @@ export const getUsersBack = async (userId, dispatch) => {
     userData.socials = socials;
   }
   if (userData.stats) {
-    console.log("Stats Data from IndexedDB:", stats);
     dispatch(setStats(stats));
   } else {
     const stats = fetchStats(userId, dispatch, userData.stats);
@@ -46,6 +45,12 @@ export const getUsersBack = async (userId, dispatch) => {
     const services = fetchServices(userId, dispatch, userData.services);
     userData.services = services;
   }
+  console.log("Socials Data from Backend: ", socialsData);
+  console.log("User Data from Backend: ", {
+    ...newData,
+    name: `${firstname} ${lastname}`.trim(),
+  });
+  console.log("Stats Data from Backend: ", statsData);
   saveUserData(userData);
 };
 

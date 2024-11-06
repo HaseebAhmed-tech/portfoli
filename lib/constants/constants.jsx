@@ -275,6 +275,20 @@ export const projects = [
   },
 ];
 
+export const editProfile = [
+  {
+    title: "Personal Insformation",
+    modalContent: [
+      "firstname",
+      "lastname",
+      "designation",
+      "phone",
+      "email",
+      "password",
+      "confirmPassword",
+    ],
+  },
+];
 export const info = [
   { icon: <FaPhoneAlt />, text: "03044630011", title: "Phone" },
   { icon: <FaEnvelope />, text: "hbmz4812@gmail.com", title: "Email" },

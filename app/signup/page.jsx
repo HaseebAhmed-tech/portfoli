@@ -1,9 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
 import { handleSubmit, onLoginClick } from "@/features/auth/signup/helpers";
 import {
   Select,
@@ -12,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MdDelete } from "react-icons/md";
 import PasswordInput from "@/components/common/PasswordInput";
 import ErrorInputs from "@/components/common/ErrorInputs";
 import { useSignupForm } from "../../features/auth/signup/hooks/useSignupForm";
@@ -27,6 +24,7 @@ import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { saveUserData } from "@/lib/storage/indexedDB";
 import { useToast } from "@/hooks/use-toast";
+import StatFields from "../../components/common/StatFields";
 const IconInput = dynamic(() => import("@/components/common/IconInput"));
 
 function Signup() {
@@ -166,7 +164,7 @@ function Signup() {
               <div className="flex flex-col">
                 <PasswordInput
                   name="confirmPassword"
-                  placeholder="Confirm Pssword"
+                  placeholder="Confirm Password"
                   showIcon={false}
                 />
                 {errors.confirmPassword && (
@@ -212,48 +210,13 @@ function Signup() {
             </Select>
 
             <p className="text-secondrytext ">Enter Stats</p>
+            <StatFields
+              statsElements={statsElements}
+              addStats={addStats}
+              removeStat={removeStat}
+              errors={errors.stats}
+            />
 
-            <div className="flex items-start flex-col">
-              {statsElements.map((stat) => {
-                return (
-                  <div
-                    key={stat.key}
-                    className="flex items-center justify-between w-full pb-2 mb-2 rounded-lg"
-                  >
-                    {stat.element}
-                    <Button
-                      type="button"
-                      variant="icon"
-                      size="icon"
-                      className="hover:bg-red-500"
-                      onClick={() => {
-                        removeStat(stat.key);
-                      }}
-                    >
-                      <MdDelete />
-                    </Button>
-                  </div>
-                );
-              })}
-
-              <Button
-                type="button"
-                variant="icon"
-                size="icon"
-                onClick={() =>
-                  addStats(
-                    statsElements.length > 0
-                      ? statsElements[statsElements.length - 1].key + 1
-                      : 0
-                  )
-                }
-              >
-                <FaPlus />
-              </Button>
-              {errors.stats && (
-                <p className="text-red-500 text-xs mt-2">{errors.stats}</p>
-              )}
-            </div>
             <Textarea
               name="description"
               className="h-[200px] "

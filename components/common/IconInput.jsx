@@ -9,8 +9,8 @@ function IconInput({ divStyle, Icon, iconStyle, inputProps, set, name }) {
       <Input
         placeholder={inputProps.placeholder}
         className="pl-10"
-        value={inputProps.value}
         name={name}
+        defaultValue={inputProps.value}
         onChange={(e) => set(e.target.value)}
       />
     </div>

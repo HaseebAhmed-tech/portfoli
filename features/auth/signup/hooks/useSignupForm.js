@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createStatElement } from "../components/StatElement";
+import { createStatElement } from "../../../../components/common/StatElement";
 export const useSignupForm = () => {
   const [linkedIn, setLinkedIn] = useState("");
   const [github, setGithub] = useState("");

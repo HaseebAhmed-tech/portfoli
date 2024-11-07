@@ -43,38 +43,38 @@ function AccountInfo() {
 
         <ErrorInputs name="phone" error={errors.phone} placeholder="Phone" />
       </div>
-<div className={"flex flex-col"}>
-      <ErrorInputs
-        name="email"
-        error={errors.email}
-        placeholder="Email Address"
-        type="email"
-        value={email}
+      <div className={"flex flex-col"}>
+        <ErrorInputs
+          name="email"
+          error={errors.email}
+          placeholder="Email Address"
+          type="email"
+          value={email}
         />
         {errors.email && (
-            <p className="text-red-500 text-xs mt-2">{errors.email}</p>
-          )}
+          <p className="text-red-500 text-xs mt-2">{errors.email}</p>
+        )}
       </div>
       <div className={"flex flex-col"}>
-            <PasswordInput
-              name="password"
-              placeholder="Password"
-              showIcon={false}
-            />
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-2">{errors.password}</p>
-            )}
+        <PasswordInput
+          name="password"
+          placeholder="Password"
+          showIcon={false}
+        />
+        {errors.password && (
+          <p className="text-red-500 text-xs mt-2">{errors.password}</p>
+        )}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
-          <div className="flex flex-col">
-            <PasswordInput
-              name="password"
-              placeholder="Password"
-              showIcon={false}
-            />
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-2">{errors.password}</p>
-            )}
+        <div className="flex flex-col">
+          <PasswordInput
+            name="password"
+            placeholder="Password"
+            showIcon={false}
+          />
+          {errors.password && (
+            <p className="text-red-500 text-xs mt-2">{errors.password}</p>
+          )}
         </div>
 
         <div className="flex flex-col">

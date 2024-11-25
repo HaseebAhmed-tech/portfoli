@@ -3,7 +3,7 @@ import { saveUserData } from "@/lib/storage/indexedDB";
 import { setUserData } from "@/features/user/userSlice";
 import { AccountInfoSchema } from "@/lib/definitions";
 
-export const submitAccountInfo = (event, setErrors) => {
+export const submitAccountInfo = (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const validatedFields = SignupFormSchema.safeParse({

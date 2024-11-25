@@ -214,7 +214,7 @@ function Signup() {
               statsElements={statsElements}
               addStats={addStats}
               removeStat={removeStat}
-              errors={errors.stats}
+              errors={errors.stats ?? ""}
             />
 
             <Textarea

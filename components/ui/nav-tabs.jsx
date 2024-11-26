@@ -4,7 +4,6 @@ import { navTabs } from "@/lib/constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setIndex } from "@/features/home/IndexSlice";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export const NavTabs = () => {
   const tabIndex = useSelector((state) => state.index.value);

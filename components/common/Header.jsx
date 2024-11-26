@@ -4,14 +4,17 @@ import { Button } from "../ui/button";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 import ProfileButton from "@/components/ui/profile-button";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const userData = useSelector((state) => state.user.userData);
+
   return (
     <header className=" py-5 max-w-7xl mx-auto text-foreground px-6 ">
       <div className="w-full flex justify-between items-center mx-auto ">
         <Link href={"/home"}>
           <h1 className="text-xl sm:text-xl lg:text-2xl text-foreground flex-1 tracking-tight uppercase">
-            Haseeb Ahmed
+            {userData.name}
             <span className="text-accent text-4xl sm:4xl lg:5xl">.</span>
           </h1>
         </Link>
@@ -28,7 +31,7 @@ function Header() {
           </div>
         </div>
         <div className="lg:hidden">
-          <MobileNav />
+          <MobileNav name={userData.name}/>
         </div>
       </div>
     </header>

@@ -1,14 +1,18 @@
 "use client";
 import React from "react";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { CiMenuFries } from "react-icons/ci";
 import { navTabs } from "@/lib/constants/constants";
 import { setIndex } from "@/features/home/IndexSlice";
 import "../ui/styles.css";
+import ProfileButton from "@/components/ui/profile-button";
+import { Button } from "@/components/ui/button";
+import { FaUser } from "react-icons/fa";
 
-function MobileNav() {
+
+function MobileNav({name}) {
   const tabIndex = useSelector((state) => state.index.value);
   const dispatch = useDispatch();
 
@@ -21,18 +25,20 @@ function MobileNav() {
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-2xl sm:text-3xl text-accent" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col">
-        <div className="mt-32 text-center text-2xl ">
+      <SheetContent className="flex flex-col border-l-2 border-foreground">
+        <SheetTitle>
+        <ProfileButton small={true} />
+        </SheetTitle>
+        <div className="mt-10 text-center text-2xl ">
           <Link href={"#"}>
             <h1 className="text-xl sm:3xl text-foreground flex-1 tracking-normal uppercase">
-              Haseeb Ahmed
+              {name}
               <span className="text-accent text-2xl sm:3xl ">.</span>
             </h1>
           </Link>
-          <nav className="flex flex-col justify-center items-center space-y-8 mt-[25%]">
+          <nav className="flex flex-col justify-center items-center space-y-8 mt-[15%]">
             {navTabs.map((tab, index) => (
-              <Link key={index} href={"#"}>
-                <button onClick={() => updateIndex(index)}>
+                <button key={index} onClick={() => updateIndex(index)}>
                   {tabIndex === index ? (
                     <Link
                       href={"#"}
@@ -49,7 +55,6 @@ function MobileNav() {
                     </Link>
                   )}
                 </button>
-              </Link>
             ))}
           </nav>
         </div>

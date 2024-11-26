@@ -21,6 +21,7 @@ export const fetchUser = async (userId, dispatch, data) => {
 };
 
 export const getUsersBack = async (userId, dispatch) => {
+  console.log("Getting User from Backend")
   const userData = await getUser(userId);
   if (userData.error) {
     return;
@@ -45,12 +46,12 @@ export const getUsersBack = async (userId, dispatch) => {
     const services = fetchServices(userId, dispatch, userData.services);
     userData.services = services;
   }
-  console.log("Socials Data from Backend: ", socialsData ?? "Empty");
+  console.log("Socials Data from Backend: ", socials ?? "Empty");
   console.log("User Data from Backend: ", {
-    ...newData,
-    name: `${firstname} ${lastname}`.trim(),
+    ...data,
+    name: `${userData.firstname ?? ""} ${userData.lastname ?? ""}`.trim(),
   });
-  console.log("Stats Data from Backend: ", statsData ?? "Empty");
+  console.log("Stats Data from Backend: ", stats ?? "Empty");
   saveUserData(userData);
 };
 

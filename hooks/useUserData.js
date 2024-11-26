@@ -5,10 +5,10 @@ import { getFirstname, getLastname } from "@/lib/utils";
 export const useUserData = () => {
   const userData = useSelector((state) => state.user.userData);
   const [firstname, setFirstname] = useState(
-    userData ? getFirstname(userData.name) : ""
+    userData ? getFirstname(userData.name) : "John"
   );
   const [lastname, setLastname] = useState(
-    userData ? getLastname(userData.name) : ""
+    userData ? getLastname(userData.name) : "Doe"
   );
   const [designation, setDesignation] = useState(
     userData ? userData.designation : ""

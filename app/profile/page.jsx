@@ -39,7 +39,7 @@ function Profile() {
                 </div>
               </div>
             </div>
-            <h1 className="text-xl lg:text-2xl">{userData.name}</h1>
+            <h1 className="text-xl lg:text-2xl">{userData.name ?? "John Doe"}</h1>
             <h2 className="text-md text-accent mb-2">{userData.designation}</h2>
             <Button variant="rounded" size="md">
               Edit Profile

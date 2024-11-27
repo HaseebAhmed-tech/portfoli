@@ -3,6 +3,7 @@ import PasswordInput from "../common/PasswordInput";
 import ErrorInputs from "../common/ErrorInputs";
 import { useForm } from "@/hooks/useForm";
 import { useUserData } from "@/hooks/useUserData";
+import { useState } from "react";
 
 function AccountInfo() {
   const { errors, setErrors } = useForm();
@@ -16,6 +17,8 @@ function AccountInfo() {
     email,
     setEmail,
   } = useUserData();
+
+  const [ resetPassword, setResetPassword ] = useState(false)
 
   return (
     <form className="flex flex-col gap-3 md:gap-6 bg-[#27272c] rounded-xl py-5 ">
@@ -55,7 +58,11 @@ function AccountInfo() {
           <p className="text-red-500 text-xs mt-2">{errors.email}</p>
         )}
       </div>
-      <div className={"flex flex-col"}>
+      
+
+
+  {!resetPassword && <p onClick={()=>{setResetPassword(!resetPassword)}} className="text-accent underline hover:cursor-pointer p-2">Reset Password</p>}
+   {resetPassword && <div className={"flex flex-col"}>
         <PasswordInput
           name="password"
           placeholder="Password"
@@ -64,8 +71,8 @@ function AccountInfo() {
         {errors.password && (
           <p className="text-red-500 text-xs mt-2">{errors.password}</p>
         )}
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
+      </div>}
+      {resetPassword && <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
         <div className="flex flex-col">
           <PasswordInput
             name="password"
@@ -89,7 +96,7 @@ function AccountInfo() {
             </p>
           )}
         </div>
-      </div>
+      </div>}
     </form>
   );
 }

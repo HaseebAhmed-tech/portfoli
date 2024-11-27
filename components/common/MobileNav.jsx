@@ -8,9 +8,6 @@ import { navTabs } from "@/lib/constants/constants";
 import { setIndex } from "@/features/home/IndexSlice";
 import "../ui/styles.css";
 import ProfileButton from "@/components/ui/profile-button";
-import { Button } from "@/components/ui/button";
-import { FaUser } from "react-icons/fa";
-
 
 function MobileNav({name}) {
   const tabIndex = useSelector((state) => state.index.value);
@@ -25,7 +22,7 @@ function MobileNav({name}) {
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-2xl sm:text-3xl text-accent" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col border-l-2 border-foreground">
+      <SheetContent className="flex flex-col border-l-2 border-accent">
         <SheetTitle>
         <ProfileButton small={true} />
         </SheetTitle>

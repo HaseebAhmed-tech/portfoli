@@ -6,17 +6,16 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogOverlay,
-  AlertDialogPortal,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-function Modal({ ModalTrigger, title, ModalContent, enableCancel = true }) {
+
+function Modal({ ModalTrigger, title, ModalContent, enableCancel = true, form }) {
   return (
-    <AlertDialog>
+    <AlertDialog >
       <AlertDialogTrigger asChild>{ModalTrigger}</AlertDialogTrigger>
-      <AlertDialogContent className="bg-[#27272c] outline-none border-none">
+      <AlertDialogContent className="bg-[#27272c] outline-none border-none max-h-[90vh] overflow-y-auto scroll-">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-foreground">
             {title}
@@ -31,7 +30,7 @@ function Modal({ ModalTrigger, title, ModalContent, enableCancel = true }) {
               Cancel
             </AlertDialogCancel>
           )}
-          <AlertDialogAction className="bg-accent text-primary hover:bg-accent-hover">
+          <AlertDialogAction form={form} type="submit" className="bg-accent text-primary hover:bg-accent-hover">
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>

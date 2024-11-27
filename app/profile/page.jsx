@@ -9,9 +9,12 @@ import Header from "@/components/common/Header";
 import SocialLinks from "@/components/forms/SocialLinks";
 import AccountInfo from "./../../components/forms/AccountInfo";
 import StatsData from "./../../components/forms/StatsData";
+ 
 
 function Profile() {
   const userData = useSelector((state) => state.user.userData);
+  const userId = useSelector((state) => state.user.userId);
+
 
   return (
     <>
@@ -56,7 +59,10 @@ function Profile() {
                     </Button>
                   }
                   title={"Account Information"}
-                  ModalContent={<AccountInfo />}
+                  form={"Account-Info"}
+                  
+                  ModalContent={<AccountInfo userId={userId}/>
+                  }
                 />
               </div>
               <div className="flex items-center justify-between py-4 border-b border-slate-800">

@@ -14,6 +14,10 @@ export const useUserData = () => {
     userData ? userData.designation : ""
   );
   const [email, setEmail] = useState(userData ? userData.email : "");
+
+  const [contact, setContact] = useState(userData ? userData.contact : "")
+
+  const [description, setDescription] = useState(userData ? userData.description : "")
   return {
     firstname,
     setFirstname,
@@ -23,5 +27,9 @@ export const useUserData = () => {
     setDesignation,
     email,
     setEmail,
+    contact,
+    setContact,
+    description,
+    setDescription
   };
 };

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 function Homepage() {
   const user = useSelector((state) => state.user.userData);
+  console.log("User Data for Homepage: ", user)
   return (
     <section className="h-full ">
       <div className="flex flex-col lg:flex-row items-center justify-between lg:pt-8 lg:pb-24">

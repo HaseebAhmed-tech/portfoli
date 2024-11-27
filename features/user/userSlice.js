@@ -13,7 +13,7 @@ const userSlice = createSlice({
       state.userId = action.payload;
     },
     setUserData: (state, action) => {
-      state.userData = action.payload;
+      state.userData = {...state.userData, ...action.payload};
     },
   },
 });

@@ -11,9 +11,9 @@ export const getUser = async (userId) => {
 
 export const updateUser = async (userId, userData) => {
   try {
-    const response = await Client.put(`/users/${userId}`, userData);
-    return response.data;
+    const response = await Client.patch(`/users/${userId}`, userData);
+    return response;
   } catch (error) {
-    return error.response.data;
+    return error.response;
   }
 }

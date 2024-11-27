@@ -4,11 +4,10 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { checkAuth } from "features/auth/helper";
+import { checkAuth } from "@/features/auth/helper";
 
 const Loading = () => {
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(null); // Will check if the user is authenticated
 
   useEffect(() => {
     const timer = setTimeout(() => {

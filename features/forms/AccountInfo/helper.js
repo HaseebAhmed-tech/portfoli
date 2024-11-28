@@ -6,7 +6,7 @@ import { handleValidationErrors } from "@/lib/utils";
 
 
 export const updateAccountInfo = async (userId, userData, dispatch) => {
-   updateUser(userId, userData);
+  updateUser(userId, userData);
   await updateUserData(userData);
   dispatch(setUserData(userData));
 };
@@ -23,7 +23,6 @@ export const handleSubmit = async (
   const formData = new FormData(event.target);
 
   const onValidatedFieldSuccess = async () => {
-
     setErrors({});
 
     const data = validatedFields.data;
@@ -31,61 +30,33 @@ export const handleSubmit = async (
     
     delete data.confirmPassword;
     delete data.oldPassword;
-  
-
 
     const { firstname, lastname, password, email, ...newData } = data;
-
 
     if(password !== null && password !== undefined){
       if(email !== null && email !== undefined){
         console.log("Email: ", email)
-
         updatedData = {...newData, name: `${firstname} ${lastname}`.trim(), password: password, email: email}
-      }
-      else{
-
+      } else{
         delete data.email;
         console.log("Email: ", email)
         updatedData = {...newData, name: `${firstname} ${lastname}`.trim(), password: password}
       }
-    }
-
-    else{
+    } else{
       delete data.password;
       
       if(email !== null && email !== undefined ){
         console.log("Email: ", email)
 
         updatedData = {...newData, name: `${firstname} ${lastname}`.trim(), email: email}
-      }
-      else{
-
+      } else{
         delete data.email;
+
         updatedData = {...newData, name: `${firstname} ${lastname}`.trim()}
       }
       console.log("Updated Data: ",updatedData)
-
     }
     
-    // const userResponse = await handleRegistration({
-    //   ...newData,
-      // name: `${firstname} ${lastname}`.trim(),
-    // });
-    // createSocials({
-    //   data: socialsData,
-    //   id: userResponse.userId,
-    // });
-    // createStats({
-    //   data: statsData,
-    //   id: userResponse.userId,
-    // });
-    // console.log("Socials Data from Signup Helper: ", socialsData);
-    // console.log("User Data from Signup Helper: ", {
-    //   ...newData,
-    //   name: `${firstname} ${lastname}`.trim(),
-    // });
-    // console.log("Stats Data from Signup Helper: ", statsData);
     console.log("Account Info Updated Data: ", updatedData);
     updateAccountInfo(userId, updatedData, dispatch)
 
@@ -107,12 +78,10 @@ export const handleSubmit = async (
   });
 
   if (!validatedFields.success) {  
-       
-      const newErrors = handleValidationErrors(validatedFields);
-      console.log("There are errors in the form: ",newErrors)
-      setErrors(newErrors);
-      return null;
-    
+    const newErrors = handleValidationErrors(validatedFields);
+    console.log("There are errors in the form: ",newErrors)
+    setErrors(newErrors);
+    return null;
   } else {
     console.log("Form has been validated for: ", userId )
     return onValidatedFieldSuccess();s

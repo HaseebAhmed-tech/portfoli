@@ -74,7 +74,8 @@ function Profile() {
                     </Button>
                   }
                   title={"Stats Data"}
-                  ModalContent={<StatsData />}
+                  
+                  ModalContent={<StatsData userId={userId}/>}
                 />
               </div>
               <div className="flex items-center justify-between py-4 border-b border-slate-800">
@@ -85,8 +86,9 @@ function Profile() {
                       Edit
                     </Button>
                   }
+                  form ={"Socials-Link"}
                   title={"Socail Links"}
-                  ModalContent={<SocialLinks />}
+                  ModalContent={<SocialLinks userId={userId}/>}
                 />
               </div>
               

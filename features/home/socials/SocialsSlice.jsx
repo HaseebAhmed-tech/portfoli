@@ -8,7 +8,7 @@ const SocialsSlice = createSlice({
   initialState,
   reducers: {
     setSocials: (state, action) => {
-      state.socials = action.payload;
+      state.socials = state.socials ? {...state.socials ,...action.payload}: action.payload;
     },
   },
 });

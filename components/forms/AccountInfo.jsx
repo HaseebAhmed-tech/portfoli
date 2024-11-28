@@ -13,13 +13,9 @@ function AccountInfo({userId}) {
 
   const {
     firstname,
-    setFirstname,
     lastname,
-    setLastname,
     designation,
-    setDesignation,
     email,
-    setEmail,
     contact,
     description
   } = useUserData();
@@ -30,12 +26,8 @@ function AccountInfo({userId}) {
 
 
   return (
-    <form onSubmit={(e) => {
-      console.log("The form is being Submitted: ", new FormData(e.target))
-      handleSubmit(e, setErrors, userId, dispatch)
-    }} id="Account-Info" className="flex flex-col gap-3 md:gap-6 bg-[#27272c] rounded-xl py-5 ">
+    <form onSubmit={(e) => {handleSubmit(e, setErrors, userId, dispatch)}} id="Account-Info" className="flex flex-col gap-3 md:gap-6 bg-[#27272c] rounded-xl py-5 ">
       <div className="grid grid-cols-2 gap-3 md:gap-6 ">
-      
         <ErrorInputs
           name="firstname"
           error={errors.firstname ?? ""}
@@ -59,6 +51,7 @@ function AccountInfo({userId}) {
 
         <ErrorInputs name="contact" error={errors.contact ?? ""} placeholder="Phone" value={contact}/>
       </div>
+
       <div className={"flex flex-col"}>
         <ErrorInputs
           name="email"
@@ -74,7 +67,10 @@ function AccountInfo({userId}) {
       
 
 
-  {!resetPassword && <p onClick={()=>{setResetPassword(!resetPassword)}} className="text-accent underline hover:cursor-pointer p-2">Reset Password</p>}
+  {!resetPassword &&
+    <p onClick={()=>{setResetPassword(!resetPassword)}} className=" text-accent underline hover:cursor-pointer p-2 w-max">
+      Reset Password
+    </p>}
    {resetPassword && <div className={"flex flex-col"}>
         <PasswordInput
           name="oldPassword"

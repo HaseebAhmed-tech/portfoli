@@ -74,7 +74,7 @@ function Profile() {
                     </Button>
                   }
                   title={"Stats Data"}
-                  
+                  form={"Stats-Data"}
                   ModalContent={<StatsData userId={userId}/>}
                 />
               </div>

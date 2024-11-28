@@ -5,14 +5,11 @@ import { useSelector } from "react-redux";
 
 export const SocialsComponent = () => {
   const socialLinks = useSelector((state) => state.socials.socials);
-  console.log("Loading Socials Links: ", socialLinks)
-
   return (
     <ul className="hidden lg:flex mr-12 space-x-2">
       {socials.map((tab, index) => {
         const socialId = tab.id;
         console.log(tab.link)
-        console.log((socialLinks[socialId]!=="" && socialLinks[socialId]!==null) ? socialLinks[socialId] : tab.link)
         return (
           <Link
             key={index}

@@ -19,24 +19,54 @@ export const handleSubmit = async (
   dispatch
 ) => {
   event.preventDefault();
-  console.log("User ID: ", userId)
-  const formData = new FormData(event.target);
 
-  console.log("Account Info Form Data, ", formData.get("firstname") )
+  const formData = new FormData(event.target);
 
   const onValidatedFieldSuccess = async () => {
 
     setErrors({});
 
     const data = validatedFields.data;
+    let updatedData = {};
     
     delete data.confirmPassword;
     delete data.oldPassword;
-    delete data.password;
-    delete data.email;
+  
 
-    const { firstname, lastname, ...newData } = data;
-    const updatedData = {...newData, name: `${firstname} ${lastname}`.trim(),}
+
+    const { firstname, lastname, password, email, ...newData } = data;
+
+
+    if(password !== null && password !== undefined){
+      if(email !== null && email !== undefined){
+        console.log("Email: ", email)
+
+        updatedData = {...newData, name: `${firstname} ${lastname}`.trim(), password: password, email: email}
+      }
+      else{
+
+        delete data.email;
+        console.log("Email: ", email)
+        updatedData = {...newData, name: `${firstname} ${lastname}`.trim(), password: password}
+      }
+    }
+
+    else{
+      delete data.password;
+      
+      if(email !== null && email !== undefined ){
+        console.log("Email: ", email)
+
+        updatedData = {...newData, name: `${firstname} ${lastname}`.trim(), email: email}
+      }
+      else{
+
+        delete data.email;
+        updatedData = {...newData, name: `${firstname} ${lastname}`.trim()}
+      }
+      console.log("Updated Data: ",updatedData)
+
+    }
     
     // const userResponse = await handleRegistration({
     //   ...newData,

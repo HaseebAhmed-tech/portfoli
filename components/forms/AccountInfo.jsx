@@ -77,7 +77,7 @@ function AccountInfo({userId}) {
   {!resetPassword && <p onClick={()=>{setResetPassword(!resetPassword)}} className="text-accent underline hover:cursor-pointer p-2">Reset Password</p>}
    {resetPassword && <div className={"flex flex-col"}>
         <PasswordInput
-          name="password"
+          name="oldPassword"
           placeholder="Password"
           showIcon={false}
         />

@@ -2,7 +2,6 @@ import { SignupFormSchema } from "@/lib/definitions";
 import { handleValidationErrors } from "@/lib/utils";
 import { handleRegistration } from "@/api/services/AuthService";
 import { createSocials } from "@/api/services/SocialsService";
-import { createStats } from "@/api/services/StatsService";
 
 export const handleSubmit = async (
   event,
@@ -31,15 +30,13 @@ export const handleSubmit = async (
     const userResponse = await handleRegistration({
       ...newData,
       name: `${firstname} ${lastname}`.trim(),
+      stats: statsData
     });
     createSocials({
       data: socialsData,
       id: userResponse.userId,
     });
-    createStats({
-      data: statsData,
-      id: userResponse.userId,
-    });
+    
     console.log("Socials Data from Signup Helper: ", socialsData);
         console.log("User Data from Signup Helper: ", {
           ...newData,

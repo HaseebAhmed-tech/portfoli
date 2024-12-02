@@ -26,8 +26,8 @@ export const handleLogin = async (userData, rememberFlag) => {
   } catch (error) {
     console.error(
       "An Error was caught by Client/AuthService",
-      error.response.data
+      error.response
     );
-    return error.response.data;
+    return error.response;
   }
 };

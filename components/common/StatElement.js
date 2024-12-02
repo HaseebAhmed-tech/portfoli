@@ -1,9 +1,7 @@
 import { Input } from "@/components/ui/input";
-import { useStats } from "@/hooks/useStats";
 
 export const createStatElement = (id, statTitle, statValue) => {
 
-  // const {updateStats} = useStats();
   return (
     <div
       key={id}

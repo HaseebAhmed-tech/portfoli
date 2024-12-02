@@ -1,7 +1,6 @@
 import { setUserData } from "@/features/user/userSlice";
 import { getUser } from "@/api/services/UserService"; // Adjust the import path as necessary
 import { getSocials } from "@/api/services/SocialsService";
-import { getStats } from "@/api/services/StatsService";
 import { getServices } from "@/api/services/ServicesService";
 import { setSocials } from "./socials/SocialsSlice";
 import { saveUserData } from "@/lib/storage/indexedDB";
@@ -37,7 +36,7 @@ export const getUsersBack = async (userId, dispatch) => {
   if (userData.stats) {
     dispatch(setStats(stats));
   } else {
-    const stats = fetchStats(userId, dispatch, userData.stats);
+    const stats = [];
     userData.stats = stats;
   }
   if (userData.services) {
@@ -64,18 +63,6 @@ export const fetchSocials = async (userId, dispatch, socials) => {
     dispatch(setSocials(newSocials));
   } catch (error) {
     console.error("Failed to fetch user:", error);
-  }
-};
-
-export const fetchStats = async (userId, dispatch, stats) => {
-  try {
-    if (stats && stats.length > 0) {
-      return;
-    }
-    const newStats = await getStats(userId);
-    dispatch(setStats(newStats));
-  } catch (error) {
-    console.error("Failed to fetch stats:", error);
   }
 };
 

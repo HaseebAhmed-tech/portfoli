@@ -1,14 +1,11 @@
 import { handleValidationErrors } from "@/lib/utils";
 import {updateStatsData} from "@/lib/storage/indexedDB"
-import { updateStats } from "@/api/services/StatsService";
 import { setStats } from "@/features/home/stats/StatsSlice";
+import { updateUser } from "@/api/services/UserService";
 
 const updateStatsInfo = (userId, updatedData, dispatch)=> {
     console.log("Updated Stats Data: ", updatedData)
-    // updateStats({
-    //     data: updatedData,
-    //     id: userId,
-    //   });
+    updateUser(userId, {stats: updatedData})
     dispatch(setStats(updatedData))
 
     
@@ -31,6 +28,7 @@ export const handleSubmit = async (
       const statName = `statName-${key}`;
       const statValue = `statValue-${key}`;
       return {
+        id: stat.key,
         text: formData.get(statName),
         num: +formData.get(statValue),
       };

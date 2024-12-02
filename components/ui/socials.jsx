@@ -9,7 +9,6 @@ export const SocialsComponent = () => {
     <ul className="hidden lg:flex mr-12 space-x-2">
       {socials.map((tab, index) => {
         const socialId = tab.id;
-        console.log(tab.link)
         return (
           <Link
             key={index}

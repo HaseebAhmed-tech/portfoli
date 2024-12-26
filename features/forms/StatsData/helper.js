@@ -1,14 +1,17 @@
 import { handleValidationErrors } from "@/lib/utils";
-import {updateStatsData} from "@/lib/storage/indexedDB"
+import {updateUserData} from "@/lib/storage/indexedDB"
 import { setStats } from "@/features/home/stats/StatsSlice";
 import { updateUser } from "@/api/services/UserService";
 
-const updateStatsInfo = (userId, updatedData, dispatch)=> {
+const updateStatsInfo = async (userId, updatedData, dispatch)=> {
     console.log("Updated Stats Data: ", updatedData)
-    updateUser(userId, {stats: updatedData})
+    
     dispatch(setStats(updatedData))
 
-    
+    await updateUserData({stats: updatedData})
+
+    updateUser(userId, {stats: updatedData})
+
 }
 
 export const handleSubmit = async (

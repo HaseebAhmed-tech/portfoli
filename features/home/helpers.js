@@ -39,11 +39,11 @@ export const getUsersBack = async (userId, dispatch) => {
     const stats = [];
     userData.stats = stats;
   }
-  if (userData.services) {
-    dispatch(setServices(services));
+  if (userData.services.services_list) {
+    dispatch(setServices(services.services_list));
   } else {
-    const services = fetchServices(userId, dispatch, userData.services);
-    userData.services = services;
+    const services = await fetchServices(userId, dispatch, userData.services);
+    userData.services = services.services_list;
   }
   console.log("Socials Data from Backend: ", socials ?? "Empty");
   console.log("User Data from Backend: ", {
@@ -51,6 +51,7 @@ export const getUsersBack = async (userId, dispatch) => {
     name: `${userData.firstname ?? ""} ${userData.lastname ?? ""}`.trim(),
   });
   console.log("Stats Data from Backend: ", stats ?? "Empty");
+  console.log("Services Data from Backend: ", services.services_list )
   saveUserData(userData);
 };
 
@@ -72,7 +73,7 @@ export const fetchServices = async (userId, dispatch, services) => {
       return;
     }
     const newServices = await getServices(userId);
-    dispatch(setServices(newServices));
+    dispatch(setServices(newServices.services_list));
   } catch (error) {
     console.error("Failed to fetch services:", error);
   }

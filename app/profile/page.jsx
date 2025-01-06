@@ -9,8 +9,9 @@ import Header from "@/components/common/Header";
 import SocialLinks from "@/components/forms/SocialLinks";
 import AccountInfo from "./../../components/forms/AccountInfo";
 import StatsData from "./../../components/forms/StatsData";
+import ServicesData from "@/components/forms/Services";
+import SectionWithModal from "@/components/common/SectionWithModal"
  
-
 function Profile() {
   const userData = useSelector((state) => state.user.userData);
   const userId = useSelector((state) => state.user.userId);
@@ -50,48 +51,11 @@ function Profile() {
           </div>
           <div className="flex-1 px-12">
             <div className="flex flex-col">
-              <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Account Information</h1>
-                <Modal
-                  ModalTrigger={
-                    <Button variant="simple" size="sm">
-                      Edit
-                    </Button>
-                  }
-                  title={"Account Information"}
-                  form={"Account-Info"}
-                  
-                  ModalContent={<AccountInfo userId={userId}/>
-                  }
-                />
-              </div>
-              <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Stats</h1>
-                <Modal
-                  ModalTrigger={
-                    <Button variant="simple" size="sm">
-                      Edit
-                    </Button>
-                  }
-                  title={"Stats Data"}
-                  form={"Stats-Data"}
-                  ModalContent={<StatsData userId={userId}/>}
-                />
-              </div>
-              <div className="flex items-center justify-between py-4 border-b border-slate-800">
-                <h1 className="text-lg">Social Links</h1>
-                <Modal
-                  ModalTrigger={
-                    <Button variant="simple" size="sm">
-                      Edit
-                    </Button>
-                  }
-                  form ={"Socials-Link"}
-                  title={"Socail Links"}
-                  ModalContent={<SocialLinks userId={userId}/>}
-                />
-              </div>
-              
+              <SectionWithModal title={"Account Information"} form={"Account-Info"} ModalContent={<AccountInfo />} userId={userId}/>
+              <SectionWithModal title={"Stats Data"} form={"Stats-Data"} ModalContent={<StatsData />} userId={userId}/>
+              <SectionWithModal title={"Socail Links"} form={"Socials-Link"} ModalContent={<SocialLinks />} userId={userId}/>
+              <SectionWithModal title={"Services"} form={"Services"} ModalContent={<ServicesData />} userId={userId} />
+              <SectionWithModal title={"Resume"} form={""} ModalContent={<div />} userId={userId}/>
             </div>
           </div>
         </div>

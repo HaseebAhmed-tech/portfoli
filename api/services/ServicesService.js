@@ -1,28 +1,47 @@
-const createServices = async (servicesData, id) => {
+import Client from "../client/client";
+
+export const createServices = async (servicesData, userId) => {
   try {
     const response = await Client.post(
       `/services`,
-      servicesData.map((service) => ({ ...service, userId: id }))
+      ...{services_list: servicesData, userId: userId}
     );
-    return response.data;
+    return response;
   } catch (error) {
     console.error(
       "An Error was caught by Client/ServicesService",
-      error.response.data
+      error.response
     );
-    return error.response.data;
+    return error.response;
   }
 };
 
-const getServices = async (userId) => {
+export const getServices = async (userId) => {
   try {
     const response = await Client.get(`/services/${userId}`);
+    return response;
+  } catch (error) {
+    console.error(
+      "An Error was caught by Client/ServicesService",
+      error.response
+    );
+    return error.response;
+  }
+};
+
+export const patchServices = async(userId, servicesData)=>{
+  try {
+    console.log("Services DATA passed to API: ", servicesData)
+    const response = await Client.patch(
+      `/services/${userId}`,
+      {services_list: servicesData, userId: userId}
+    );
     return response.data;
   } catch (error) {
     console.error(
       "An Error was caught by Client/ServicesService",
-      error.response.data
+      error.response
     );
-    return error.response.data;
+    return error.response;
   }
-};
+}

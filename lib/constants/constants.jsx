@@ -72,32 +72,12 @@ export const stats = [
 export const services = [
   {
     num: 1,
-    title: "Web Development",
+    title: "Add Custom Services",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima eaque voluptates a!",
-    href: "",
+      "Click here to add your own Custom Services",
+    href: "/profile",
   },
-  {
-    num: 2,
-    title: "Application Development",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima eaque voluptates a!",
-    href: "",
-  },
-  {
-    num: 3,
-    title: "Backend Development",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima eaque voluptates a!",
-    href: "",
-  },
-  {
-    num: 4,
-    title: "Artificial Intelligence",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima eaque voluptates a!",
-    href: "",
-  },
+  
 ];
 
 export const about = {
@@ -123,7 +103,7 @@ export const experience = {
   items: [
     {
       comapany: "Cognitive Healthcare Int.",
-      position: "Application Dev. Intern",
+      position: "Application Dev",
       duration: "June 2023 - August 2023",
     },
     {

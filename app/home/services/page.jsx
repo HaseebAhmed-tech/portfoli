@@ -2,10 +2,28 @@
 
 import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
-import { services } from "@/lib/constants/constants";
+import  { services as servicesPlaceholder } from "@/lib/constants/constants" ;
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function Services() {
+
+  const [ services, setServices ]= useState(useSelector((state) => state.services.services))
+
+  useEffect(()=> {
+    console.log("Services Use Effect Call: => ", services)
+    checkServices(services)
+  }, [services]);
+
+  const checkServices = (services) => {
+
+    if (services==null || services.length==0){
+      console.log("Services PlaceHolder: ", servicesPlaceholder)
+      setServices(servicesPlaceholder)  
+    }}
+    
   return (
     <section className="min-h-[80vh] flex flex-col justify-center py-12 lg:py-0">
       <motion.div
@@ -16,7 +34,7 @@ function Services() {
         }}
         className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
       >
-        {services.map((service, index) => {
+        {services && services.map((service, index) => {
           return (
             <div
               key={index}
@@ -24,10 +42,10 @@ function Services() {
             >
               <div className="w-full flex justify-between items-center">
                 <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500 ">
-                  {service.num}
+                  {index + 1}
                 </div>
                 <Link
-                  href={service.href}
+                  href={service?.href ?? ""}
                   className="w-[70px] h-[70px] rounded-full bg-foreground group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
                 >
                   <BsArrowDownRight className="text-primary text-3xl " />
